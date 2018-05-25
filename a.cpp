@@ -5,7 +5,7 @@ using namespace cv;
 
 int main(){
 
-  Mat src_image = imread("puzzle.jpg");
+  Mat src_image = imread("puzzle.png");
   namedWindow("aaa");
   imshow("aaa",src_image);
 
