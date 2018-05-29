@@ -23,7 +23,7 @@ int main(){
   Mat result;
   matchTemplate(src_image, temp_image, result, TM_CCORR_NORMED);
   
-  vector<Point> detected_point;
+  std::vector<Point> detected_point;
   float threshold = 0.96f;
   for (int y = 0; y < result.rows; y++){
     for (int x = 0; x < result.cols; x++){
