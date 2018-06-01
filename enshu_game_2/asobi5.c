@@ -18,10 +18,41 @@
 ***********************************************************/
 void display(void)
 {
-    printf("Display Event\n");
-    
-    glClear (GL_COLOR_BUFFER_BIT);          /* 画面を消去 */
-    glutSwapBuffers();                      /* 描画されたCGを画面に表示 */
+
+  glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  
+  glPushMatrix ();  
+
+  int a, b, c;
+  a = 0;
+  b = 0;
+  c = 0;  
+  
+  int die_flag = 1;                                                             
+  static float die_ptime = 0.001f;
+  static int Rotate = 1;
+  if(die_ptime > 1.0){
+    die_ptime += 0.001;
+    Rotate += 1;
+  }  
+     
+  glTranslatef(a,b,c);
+  glRotatef(Rotate,0,0,1.0);
+  if(die_flag==2){
+    glColor3f( 1.0-die_ptime, 1.0-die_ptime, 1.0 );  
+  }
+  else if(die_flag==0){
+    glColor3f( 1.0, 1.0-die_ptime, 1.0-die_ptime );  
+  }
+  else{
+    glColor3f( 1.0, 1.0, 1.0 );   
+  }
+  glutWireSphere (0.4,5.0,2.0);
+
+  glPopMatrix ();
+
+  glutSwapBuffers();
+
 }
 
 
@@ -33,8 +64,6 @@ void display(void)
 ***********************************************************/
 void timer(int timerID)
 {
-    printf("Timer Event\n");
-    glutTimerFunc(1000, timer, 0);
 }
 
 
@@ -48,18 +77,16 @@ void timer(int timerID)
 ***********************************************************/
 void keyboard(unsigned char key, int x, int y )
 {
-    printf("Keyboard Event  key:'%c', x:%3d, y:%3d\n", key, x, y);
+  static int count = 0;
+  switch(key){                                                                          
+    case 't':
+      count++;
+      printf("aa\n");
+      break;
+    default :
+      break;
+  }
 
-    /* キーボード処理 */
-    switch( key )
-    {
-        case 'q':
-            exit( 0 );              /* プログラム終了 */
-            break;
-        case 'd':
-            glutPostRedisplay();    /* 描画要求 */
-            break;
-    }
 } 
 
 
@@ -74,8 +101,6 @@ void keyboard(unsigned char key, int x, int y )
 ***********************************************************/
 void mouseButton(int button, int state, int x, int y )
 {
-    printf("Mouse Button Event  button:%d, state:%4s, x:%3d, y:%3d\n", 
-        button, (state==GLUT_DOWN ? "down": "up"), x, y);
 }
 
 
@@ -88,7 +113,6 @@ void mouseButton(int button, int state, int x, int y )
 ***********************************************************/
 void mouseDrag(int x, int y)
 {
-    printf("Mouse Drag Event  x:%3d, y:%3d\n", x, y);
 }
 
 
