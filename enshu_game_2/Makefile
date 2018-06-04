@@ -1,4 +1,4 @@
-all: asobi2 asobi asobi3 asobi4 asobi5
+all: asobi2 asobi asobi3 asobi4 asobi5 asobi6
 
 asobi: asobi.c
 	gcc -o asobi asobi.c -lglut -lGLU -lGL  -lXi -lXext -lX11 -lm
@@ -14,3 +14,6 @@ asobi4: asobi4.c
 
 asobi5: asobi5.c
 	gcc -o asobi5 asobi5.c -lglut -lGLU -lGL  -lXi -lXext -lX11 -lm
+
+asobi6: asobi6.c
+	gcc -o asobi6 asobi6.c -lglut -lGLU -lGL  -lXi -lXext -lX11 -lm

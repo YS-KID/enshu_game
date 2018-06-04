@@ -10,6 +10,8 @@
 #include <GL/glu.h>
 #include <stdio.h>
 
+int Rotate = 0;
+
 /**********************************************************
 |  関数：display()
 |  説明：1枚のグラフィック描画イベント処理
@@ -27,12 +29,9 @@ void display(void)
   a = 0;
   b = 0;
   c = 0;  
-  
-  int die_flag = 1;                                                             
-  static int Rotate = 1;
      
   glTranslatef(a,b,c);
-//  glRotatef(Rotate,0,0,1.0);
+  glRotatef(Rotate,0,0,1.0);
   glColor3f( 1.0, 1.0, 1.0 );   
   glutWireSphere (0.4,5.0,2.0);
 
@@ -51,6 +50,16 @@ void display(void)
 ***********************************************************/
 void timer(int timerID)
 {
+
+  Rotate += 1;
+  if(Rotate > 360){
+     Rotate -= 360;
+  }
+  printf("%d", Rotate);
+  
+  glutPostRedisplay();
+  glutTimerFunc(3, timer, 0);
+
 }
 
 
@@ -122,7 +131,7 @@ void myInit (char *windowTitle)
     glutKeyboardFunc(keyboard);         /* キーボードを押した時 */
     glutMouseFunc   (mouseButton);      /* マウスボタンを押した時*/
     glutMotionFunc  (mouseDrag);        /* マウスドラッグした時 */
-    glutTimerFunc   (1000, timer, 0);   /* 1000(ms)経過時 */
+    glutTimerFunc   (15, timer, 0);   /* 15(ms)経過時 */
     glutDisplayFunc (display);          /* 画面表示 */
 }
 
