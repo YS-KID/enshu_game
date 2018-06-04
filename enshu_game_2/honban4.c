@@ -59,7 +59,7 @@ void display(void)
      
   glTranslatef(Cube_x,Cube_y,Cube_z);
   glRotatef(Rotate,1.0,0,1.0);
-  glColor3f(1.0, 1.0, 0.5);   
+  glColor3f(0.0, 0.0, 0.0);   
   glutWireSphere (0.1,10.0,10.0);
 
   glPopMatrix ();
@@ -86,7 +86,7 @@ void display(void)
   sprintf(a, "%.1lf", (t - Ctime)/10000.0);
   char *c = a;
   if(t - Ctime > 300000.0){
-    //die_flag = 3;
+    die_flag = 0;
   }
 
   while(*c){
@@ -159,7 +159,7 @@ void display(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPushMatrix();
     glColor3f(1.0,0.0,0.0); 
-    glRasterPos3f(-0.15, 0.0, 1.0f);
+    glRasterPos3f(-0.25, 0.0, 1.0f);
     char *b = "Press 's' to start.";
     while(*b){
       glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24 , *b);
@@ -258,7 +258,7 @@ void timer(int timerID)
     R[i] = sqrt(pow(Cube_x-(-enemy_x[i]/3.5),2) + pow(Cube_y-enemy_y[i]/4.0,2));
     //printf("%lf\n",R[i]);
     if(R[i] < 0.18){
-      //die_flag = 1;
+      die_flag = 0;
       //printf("当たった\n");
     }
   }
@@ -350,7 +350,7 @@ void myInit (char *windowTitle)
     glutInitWindowSize(800, 800);                   /* ウインドウサイズ */
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);   /* 描画モード */
     mainWindow = glutCreateWindow(windowTitle);                  /* ウインドウの表示 */
-    glClearColor (0.0, 0.0, 0.0, 1.0);              /* 画面消去色の設定 */
+    glClearColor (0.8, 0.8, 0.8, 0.0);              /* 画面消去色の設定 */
 
     /* イベント発生時に呼び出す関数の登録 */
     glutKeyboardFunc(keyboard);         /* キーボードを押した時 */
