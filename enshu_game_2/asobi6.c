@@ -12,6 +12,8 @@
 
 int Rotate = 0;
 
+int mainWindow;
+
 /**********************************************************
 |  関数：display()
 |  説明：1枚のグラフィック描画イベント処理
@@ -25,15 +27,15 @@ void display(void)
   
   glPushMatrix ();  
 
-  int a, b, c;
-  a = 0;
+  float a, b, c;
+  a = -0.5;
   b = 0;
   c = 0;  
      
   glTranslatef(a,b,c);
-  glRotatef(Rotate,0,0,1.0);
-  glColor3f( 1.0, 1.0, 1.0 );   
-  glutWireSphere (0.4,5.0,2.0);
+  glRotatef(Rotate,1.0,0,1.0);
+  glColor3f(1.0, 1.0, 0.5);   
+  glutWireSphere (0.1,10.0,10.0);
 
   glPopMatrix ();
 
@@ -50,16 +52,15 @@ void display(void)
 ***********************************************************/
 void timer(int timerID)
 {
-
   Rotate += 1;
   if(Rotate > 360){
      Rotate -= 360;
   }
-  printf("%d", Rotate);
+//  printf("%d\n", Rotate);
+//  fflush(stdout);
   
   glutPostRedisplay();
-  glutTimerFunc(3, timer, 0);
-
+  glutTimerFunc(20, timer, 0);
 }
 
 
@@ -82,6 +83,8 @@ void keyboard(unsigned char key, int x, int y )
     default :
       break;
   }
+
+  glutDestroyWindow();
 
 } 
 
@@ -122,7 +125,7 @@ void myInit (char *windowTitle)
 {
     /* OpenGLウインドウ作成までの初期化 */
     glutInitWindowPosition(0, 0);                   /* ウインドウ表示位置 */
-    glutInitWindowSize(400, 400);                   /* ウインドウサイズ */
+    mainWindow = glutInitWindowSize(800, 800);                   /* ウインドウサイズ */
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);   /* 描画モード */
     glutCreateWindow(windowTitle);                  /* ウインドウの表示 */
     glClearColor (0.0, 0.0, 0.0, 1.0);              /* 画面消去色の設定 */
