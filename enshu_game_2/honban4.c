@@ -150,6 +150,7 @@ void display(void)
     enemy_y[9] = 0.3;
     
   }
+  //YouWin画面
   if(die_flag == 2){
     Ctime = clock();
     for(int i = 0; i < NUM_ENE; i++){
@@ -167,6 +168,7 @@ void display(void)
     }
     glPopMatrix ();
   }
+  //Start画面
   if(die_flag == 3){
     Ctime = clock();
     for(int i = 0; i < NUM_ENE; i++){
