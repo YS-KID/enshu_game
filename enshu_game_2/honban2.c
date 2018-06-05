@@ -264,6 +264,8 @@ void timer(int timerID)
 ***********************************************************/
 void keyboard(unsigned char key, int x, int y )
 {
+
+  //keyboardで画面を切り替えるための旗を切り替える
   static int count = 0;
   switch(key){                                                                          
     case 'r':
@@ -290,6 +292,7 @@ void mouseButton(int button, int state, int x, int y )
   if(state == GLUT_DOWN){
     switch(button){
     
+    //左クリックでjump_flagを立てる
     case GLUT_LEFT_BUTTON:
       jcount++;
       if(jcount < 3){
@@ -309,11 +312,11 @@ void mouseButton(int button, int state, int x, int y )
 void myInit (char *windowTitle)
 {
     /* OpenGLウインドウ作成までの初期化 */
-    glutInitWindowPosition(400, 50);                   /* ウインドウ表示位置 */
-    glutInitWindowSize(800, 800);                   /* ウインドウサイズ */
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);   /* 描画モード */
-    mainWindow = glutCreateWindow(windowTitle);                  /* ウインドウの表示 */
-    glClearColor (0.8, 0.8, 0.8, 0.0);              /* 画面消去色の設定 */
+    glutInitWindowPosition(1000, 0);                   
+    glutInitWindowSize(1000, 1000);                    
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);   
+    mainWindow = glutCreateWindow(windowTitle);     
+    glClearColor (0.8, 0.8, 0.8, 0.0);              
 
     /* イベント発生時に呼び出す関数の登録 */
     glutKeyboardFunc(keyboard);         /* キーボードを押した時 */
@@ -325,17 +328,13 @@ void myInit (char *windowTitle)
 
 /***********************************************************
 |  関数：main()
-|  説明：メイン関数
-|  引数：int argc       実行時引数の数
-|  引数：char** argv    実行時引数の内容（文字列配列）
-|  戻値：int            0:正常終了
 ***********************************************************/
 int main(int argc, char** argv)
 {
     /* 初期化 */
     Ctime = clock();
-    glutInit(&argc, argv);  /* OpenGL の初期化 */
-    myInit(argv[0]);        /* ウインドウ表示と描画設定の初期化 */
+    glutInit(&argc, argv);  
+    myInit(argv[0]);        
 
     /* イベント処理ループ */
     glutMainLoop(); 

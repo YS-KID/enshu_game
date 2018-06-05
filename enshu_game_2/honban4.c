@@ -12,7 +12,7 @@
 #include <time.h>
 #include <math.h>
 
-int NUM_ENE = 5;
+int NUM_ENE = 10;
 
 double V[10] = {0.06, 0.03, 0.02, 0.05, 0.055, 0.025, 0.04, 0.065, 0.03, 0.035};
 
@@ -346,7 +346,7 @@ void mouseDrag(int x, int y)
 void myInit (char *windowTitle)
 {
     /* OpenGLウインドウ作成までの初期化 */
-    glutInitWindowPosition(400, 50);                   /* ウインドウ表示位置 */
+    glutInitWindowPosition(0, 0);                   /* ウインドウ表示位置 */
     glutInitWindowSize(800, 800);                   /* ウインドウサイズ */
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);   /* 描画モード */
     mainWindow = glutCreateWindow(windowTitle);                  /* ウインドウの表示 */

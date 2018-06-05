@@ -346,8 +346,8 @@ void mouseDrag(int x, int y)
 void myInit (char *windowTitle)
 {
     /* OpenGLウインドウ作成までの初期化 */
-    glutInitWindowPosition(400, 50);                   /* ウインドウ表示位置 */
-    glutInitWindowSize(800, 800);                   /* ウインドウサイズ */
+    glutInitWindowPosition(1000, 0);                   /* ウインドウ表示位置 */
+    glutInitWindowSize(1000, 1000);                   /* ウインドウサイズ */
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);   /* 描画モード */
     mainWindow = glutCreateWindow(windowTitle);                  /* ウインドウの表示 */
     glClearColor (0.8, 0.8, 0.8, 0.0);              /* 画面消去色の設定 */

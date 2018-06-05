@@ -85,7 +85,7 @@ void display(void)
   char a[256];
   sprintf(a, "%.1lf", (t - Ctime)/10000.0);
   char *c = a;
-  if(t - Ctime > 300000.0){
+  if(t - Ctime > 100000.0){
     die_flag = 3;
   }
 
@@ -346,8 +346,8 @@ void mouseDrag(int x, int y)
 void myInit (char *windowTitle)
 {
     /* OpenGLウインドウ作成までの初期化 */
-    glutInitWindowPosition(400, 50);                   /* ウインドウ表示位置 */
-    glutInitWindowSize(800, 800);                   /* ウインドウサイズ */
+    glutInitWindowPosition(1000, 0);                   /* ウインドウ表示位置 */
+    glutInitWindowSize(1000, 1000);                   /* ウインドウサイズ */
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);   /* 描画モード */
     mainWindow = glutCreateWindow(windowTitle);                  /* ウインドウの表示 */
     glClearColor (0.8, 0.8, 0.8, 0.0);              /* 画面消去色の設定 */
