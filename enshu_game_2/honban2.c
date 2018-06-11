@@ -250,10 +250,8 @@ void timer(int timerID)
   //敵とのあたり判定
   for(int i = 0; i < NUM_ENE; i++){
     R[i] = sqrt(pow(Cube_x-(-enemy_x[i]/3.5),2) + pow(Cube_y-enemy_y[i]/4.0,2));
-    //printf("%lf\n",R[i]);
     if(R[i] < 0.18){
       die_flag = 1;
-      //printf("当たった\n");
     }
   }
 
@@ -317,16 +315,16 @@ void myInit (char *windowTitle)
 {
     /* OpenGLウインドウ作成までの初期化 */
     glutInitWindowPosition(1000, 0);                   
-    glutInitWindowSize(1000, 1000);                    
+    glutInitWindowSize(800, 800);                    
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);   
     mainWindow = glutCreateWindow(windowTitle);     
     glClearColor (0.8, 0.8, 0.8, 0.0);              
 
-    /* イベント発生時に呼び出す関数の登録 */
-    glutKeyboardFunc(keyboard);         /* キーボードを押した時 */
-    glutMouseFunc   (mouseButton);      /* マウスボタンを押した時*/
-    glutTimerFunc   (15, timer, 0);   /* 15(ms)経過時 */
-    glutDisplayFunc (display);          /* 画面表示 */
+    /* イベントが発生した時に呼び出す関数の登録 */
+    glutKeyboardFunc(keyboard);
+    glutMouseFunc   (mouseButton);
+    glutTimerFunc   (15, timer, 0);
+    glutDisplayFunc (display);
 }
 
 
